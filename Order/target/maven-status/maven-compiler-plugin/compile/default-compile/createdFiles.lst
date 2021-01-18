@@ -1,0 +1,17 @@
+mealkit\external\PaymentService.class
+mealkit\Order.class
+mealkit\config\kafka\KafkaProcessor.class
+mealkit\Ordered.class
+mealkit\OrderRepository.class
+mealkit\AbstractEvent$1.class
+mealkit\OrderController.class
+mealkit\external\DeliveryService.class
+mealkit\Cancelled.class
+mealkit\DeliveryCompleted.class
+mealkit\external\Delivery.class
+mealkit\PolicyHandler.class
+mealkit\DeliveryRequested.class
+mealkit\DeliveryCancelled.class
+mealkit\OrderApplication.class
+mealkit\AbstractEvent.class
+mealkit\external\Payment.class
