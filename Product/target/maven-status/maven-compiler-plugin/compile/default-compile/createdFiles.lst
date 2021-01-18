@@ -1,0 +1,12 @@
+mealkit\ProductRegistered.class
+mealkit\config\kafka\KafkaProcessor.class
+mealkit\AbstractEvent$1.class
+mealkit\Product.class
+mealkit\ProductController.class
+mealkit\ProductRepository.class
+mealkit\ProductApplication.class
+mealkit\PolicyHandler.class
+mealkit\PaymentCompleted.class
+mealkit\ProductModified.class
+mealkit\AbstractEvent.class
+mealkit\PaymentCancelled.class
