@@ -1,0 +1,56 @@
+package mealkit;
+
+public class Ordered extends AbstractEvent {
+
+    private Long id;
+    private String productId;
+    private Integer qty;
+    private String status;
+    private String cardnumber;
+    private String cardowner;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+    public Integer getQty() {
+        return qty;
+    }
+
+    public void setQty(Integer qty) {
+        this.qty = qty;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getCardnumber() {
+        return cardnumber;
+    }
+
+    public void setCardnumber(String cardnumber) {
+        this.cardnumber = cardnumber;
+    }
+    public String getCardowner() {
+        return cardowner;
+    }
+
+    public void setCardowner(String cardowner) {
+        this.cardowner = cardowner;
+    }
+}
