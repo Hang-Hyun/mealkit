@@ -40,9 +40,9 @@ server:
 
 api:
   payment:
-    url: http://localhost:8084
+    url: http://Payment:8080
   delivery:
-    url: http://localhost:8085
+    url: http://Delivery:8080
 ---
 
 spring:
@@ -68,3 +68,11 @@ spring:
         event-out:
           destination: mealkit
           contentType: application/json
+
+
+api:
+  payment:
+    url: http://Payment:8080
+  delivery:
+    url: http://Delivery:8080
+---
