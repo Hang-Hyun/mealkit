@@ -67,7 +67,7 @@
 ![image](https://user-images.githubusercontent.com/75401920/105209557-50db5580-5b8d-11eb-9f05-3f46d6b2a068.png)
 
 
-    - View Model 추가
+    - Marketing 서비스 및 셀러 View Model 추가
 
 ### 1차 완성본에 대한 기능적/비기능적 요구사항을 커버하는지 검증
 
