@@ -193,6 +193,7 @@ product 상품 등록
 
    
  - AutoScale 적용된 모습
+
    kubectl autoscale deployment order --cpu-percent=10 --min=1 --max=10
 
 ![image](https://user-images.githubusercontent.com/75401920/105006642-4714fd80-5a7a-11eb-8424-aa2dede45666.png)
