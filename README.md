@@ -33,23 +33,28 @@
 
 1. 판매자가 상품을 등록한다.
 2. 회원이 상품을 선택하여 주문한다.
+3. 주문이 완료되면 고객에게 주문내역이 안내된다.
 3. 고객이 결제하고, 결제완료되면 배송 요청된다.
 4. 결제완료되면 재고수량 변경을 한다.
 5. 회원이 배송완료처리하면 배송완료된다.
+6. 배송상태가 변경될 때마다 고객에게 안내된다.
 6. 고객이 주문 취소할 수 있다.
-7. 주문취소되면 배송이 취소된다.
-8. 주문취소되면 결제가 취소된다.
-9. 고객이 주문내역(상태)를 중간중간 조회가능하다.
+7. 주문취소되면 판매자에게 알림이 간다.
+8. 판매자에게 알림이 가고 나면 결제가 취소된다.
+9. 결제가 취소되면 배송이 취소 된다.
+10. 배송이 취소되면 판매자에게 배송 취소 알림이 간다.
+9. 판매자는 주문취소 요청내역을 조회가능하다.
 
 비기능적 요구사항
 1. 트랜잭션
     1. 결제가 되지 않은 주문건은 아예 거래가 성립되지 않아야 한다  Sync 호출
+    1. 판매자에게 알림이 가지 않으면 주문취소가 되지 않는다. Sync 호출
     
 1. 장애격리
     1. 상품관리 기능이 수행되지 않더라도 주문은 365일 24시간 받을 수 있어야 한다  Async (event-driven), Eventual Consistency
-    1. 결제시스템이 과중되면 사용자를 잠시동안 받지 않고 결제를 잠시후에 하도록 유도한다  Circuit breaker, fallback
+    1. 알림시스템이 과중되면 사용자를 잠시동안 받지 않고 주문 취소를 잠시후에 하도록 유도한다  Circuit breaker, fallback
 1. 성능
-    1. 고객이 수시로 주문상태를 마이페이지에서 확인할 수 있어야 한다  CQRS
+    1. 판매자는 수시로 취소 요청내역을 마이페이지에서 확인할 수 있어야 한다  CQRS
 
 
 
@@ -66,34 +71,21 @@
 
 ### 1차 완성본에 대한 기능적/비기능적 요구사항을 커버하는지 검증
 
-![image](https://user-images.githubusercontent.com/75401920/104998395-7b82bc80-5a6e-11eb-905f-1a3675837500.png)
-
-    - 고객이 상품을 선택하여 주문한다 (ok)
-    - 주문하면 결제가 동시에 이뤄진다. (ok)
-    - 결제가 이뤄지면 배송이 요청된다. (ok)
-    - 결제가 이뤄지면 상품재고가 감소한다. (ok)
-    - 배송이 요청되고 배송이 시작되면 주문상태가 배송시작으로 변경된다. (ok)
+    - 고객이 상품을 선택하여 주문한다 
+    - 주문하면 결제가 동시에 이뤄진다.
+    - 주문이 완료되면 구매자에게 알림이 발송된다.
+    - 결제가 이뤄지면 배송이 요청된다.
+    - 결제가 이뤄지면 상품재고가 감소한다.
+    - 배송상태가 변동되면 구매자에게 알림이 간다.
+    - 배송이 요청되고 배송이 시작되면 주문상태가 배송시작으로 변경된다. 
 
 ![image](https://user-images.githubusercontent.com/75401920/105209753-88e29880-5b8d-11eb-8b57-30a1516dbaf8.png)
 
-    - 고객이 주문을 취소할 수 있다 (ok)
-    - 주문이 취소되면 결제가 취소된다 (ok)
-    - 결제가 취소되면 배송이 취소된다. (ok)
-    - 배송이 취소되면 주문상태가 배송취소로 변경된다. (ok)
-
-
-
-
-### 비기능 요구사항에 대한 검증
-
-![image](https://user-images.githubusercontent.com/75401920/104999118-a7eb0880-5a6f-11eb-8de2-bf5926de7436.png)
-
-    - 마이크로 서비스를 넘나드는 시나리오에 대한 트랜잭션 처리
-        - 고객 주문시 결제처리:  결제가 완료되지 않은 주문은 절대 받지 않는다는 경영자의 오랜 신념(?) 에 따라, ACID 트랜잭션 적용. 주문완료시 결제처리에 대해서는 Request-Response 방식 처리
-        - 결제완료 시 이벤트 드리븐 방식으로 상품서비스의 상태에 관계없이 처리됨
-        - 결제시스템이 과부하 걸릴 경우 잠시동안 결제를 못하도록 유도함
-        - 고객은 수시로 마이페이지에서 조회 가능함
-
+    - 고객이 주문을 취소할 수 있다 
+    - 주문이 취소되면 판매자에게 알림이 간다. 
+    - 알림이 발송되면 결제를 취소한다. 
+    - 결제가 취소되면 배송을 취소한다.
+    - 배송이 취소되면 주문상태가 배송취소로 변경된다. 
 
 
 
@@ -103,8 +95,7 @@
 분석/설계 단계에서 도출된 헥사고날 아키텍처에 따라, 각 BC별로 대변되는 마이크로 서비스들을 스프링부트로 구현하였다. 
 
 
-1,3. 주문->결제->배송->주문 캡쳐
-
+1. 
 
 주문생성
 
@@ -150,85 +141,81 @@
 
    
 
-5.6 Gateway, Deploy
+4. Gateway, Deploy
 
 product 상품 등록 
- - LoadBalanced로 노출된 퍼블릭IP로 상품등록 API 호출
+ - LoadBalancer로 노출된 퍼블릭IP로 상품등록 API 호출
 
-![image](https://user-images.githubusercontent.com/75401920/105001534-42008000-5a73-11eb-8ab7-c955745e7703.png)
+![image](https://user-images.githubusercontent.com/75401920/105191822-ddc8e380-5b7a-11eb-8211-3b3c5024fbfb.png)
 
 
 애져에 배포되어 있는 상황 조회 kubectl get all
 
-![image](https://user-images.githubusercontent.com/75401920/105000728-06b18180-5a72-11eb-8609-e527c48f7060.png)
+![image](https://user-images.githubusercontent.com/75401920/105196928-76f9f900-5b7f-11eb-859f-caf6ad584aaf.png)
 
 
 
-7. Istio 적용 캡쳐
+5. Istio 적용 캡쳐
 
-  - Istio테스트를 위해서 Payment에 sleep 추가
+  - Istio테스트를 위해서 Marketing에 sleep 추가
   
 ![image](https://user-images.githubusercontent.com/75401920/105005616-e89b4f80-5a78-11eb-82cb-de53e5881e3f.png)
 
  - istio Virtual Service 생성
 
-![image](https://user-images.githubusercontent.com/75401920/105109571-22fbff80-5b00-11eb-9690-74b751e435a6.png)
+![image](https://user-images.githubusercontent.com/75401920/105209144-d90d2b00-5b8c-11eb-9d32-5a81e348c330.png)
 
-![image](https://user-images.githubusercontent.com/75401920/105109657-5179da80-5b00-11eb-9e87-637a565c75ad.png)
+![image](https://user-images.githubusercontent.com/75401920/105208750-656b1e00-5b8c-11eb-872e-dc9c51a327c7.png)
 
- - 적용 후 siege로 부하 테스트
-  3초 넘어가는 요청건은 실패로 처리 됨
+ - siege 테스트
 
-![image](https://user-images.githubusercontent.com/75401920/105109994-07452900-5b01-11eb-857b-385a5960fecb.png)
+![image](https://user-images.githubusercontent.com/75401920/105209299-06f26f80-5b8d-11eb-86bf-e4b0f27d32bc.png)
 
- 추가 적용
- - payments 서비스에 Istio 적용
-   
-![image](https://user-images.githubusercontent.com/75401920/105006822-7f1c4080-5a7a-11eb-9191-db35233773d3.png)
 
- - Istio 적용 후 seige 실행 시 대략 50%정도 확률로 CB가 열려서 처리됨
+6. AutoScale Out
 
-![image](https://user-images.githubusercontent.com/75401920/105006958-b2f76600-5a7a-11eb-99f3-c8b81a4ec270.png)
 
-8. AutoScale
+ - autoscale 적용
 
-   
- - AutoScale 적용된 모습
+kubectl autoscale deployment order --cpu-percent=20 --min=1 --max=10
 
-   kubectl autoscale deployment order --cpu-percent=10 --min=1 --max=10
-
-![image](https://user-images.githubusercontent.com/75401920/105006642-4714fd80-5a7a-11eb-8424-aa2dede45666.png)
+siege -c100 -t30S -v --content-type "application/json" 'http://10.0.22.136:8080/orders POST {"prodId": 1, "qty":5}'
 
  - AutoScale적용 후 seige를 통해서 부하 테스트 시  order pod 개수가 증가함
 
-![image](https://user-images.githubusercontent.com/75401920/105006308-cf46d300-5a79-11eb-96db-77d865c9bfe9.png)
+![image](https://user-images.githubusercontent.com/75401920/105206906-394e9d80-5b8a-11eb-90ea-463a33781b5b.png)
 
 
-9. Readness Proobe
+![image](https://user-images.githubusercontent.com/75401920/105207003-56836c00-5b8a-11eb-804a-72fea60f83b3.png)
+
+
+7. Readiness Probe
+
+ - readiness probe 적용전
+
+siege -c1 -t2000S -v --content-type "application/json" 'http://10.0.127.214:8080/orders POST {"prodNm": "1001", "qty":5}'
+
+kubectl set image deploy product=skcc06.azurecr.io/product:v2
+
+![image](https://user-images.githubusercontent.com/75401920/105202941-da872500-5b85-11eb-84d1-04398aecf47d.png)
+
+ - readiness probe 적용
+
+![image](https://user-images.githubusercontent.com/75401920/105203175-2a65ec00-5b86-11eb-9253-ea05b1f80336.png)
+
+ - 적용 후 테스트 
+
+![image](https://user-images.githubusercontent.com/75401920/105203589-a3fdda00-5b86-11eb-8d81-e07e2dd53d64.png)
+
+![image](https://user-images.githubusercontent.com/75401920/105203774-d8719600-5b86-11eb-8acf-d98d00424c2c.png)
 
 
 
-   siege로 계속 호출하는 중에 kubectl set image를 통해서 배포 시 무중단 배포 확인
- 
-  - Readiness 적용 전: 소스배포시 500 오류 발생
-  
-![image](https://user-images.githubusercontent.com/75401920/105004548-7d04b280-5a77-11eb-95cb-d5fe19a40557.png)
 
 
-  - 적용 후: 소스배포시 100% 수행됨
-  
-![image](https://user-images.githubusercontent.com/75401920/105114273-e1705200-5b09-11eb-9fd8-da7d7b57dc7b.png)
-
-![image](https://user-images.githubusercontent.com/75401920/105004912-f0a6bf80-5a77-11eb-88ee-f0bcd8f67f45.png)
 
 
-  - deploy
-
-![image](https://user-images.githubusercontent.com/75401920/105191822-ddc8e380-5b7a-11eb-8211-3b3c5024fbfb.png)
-
- - kubectl get all
-
-![image](https://user-images.githubusercontent.com/75401920/105196928-76f9f900-5b7f-11eb-859f-caf6ad584aaf.png)
+---------------------------------------------------------------------------------------------------------------------------------
 
 
 주문생성
@@ -256,89 +243,6 @@ product 상품 등록
 알림 확인
 
 ![image](https://user-images.githubusercontent.com/75401920/105197980-8c235780-5b80-11eb-8af5-769200160960.png)
-
-
-
-
-
-주문 취소
-
-![image](https://user-images.githubusercontent.com/75401920/105200054-c42b9a00-5b82-11eb-9bf0-3bbfdbc27c0c.png)
-
-
-알림 확인(동기방식 및 Correaltion)
-
-![image](https://user-images.githubusercontent.com/75401920/105200173-e4f3ef80-5b82-11eb-82be-8b91f905afa8.png)
-
-
-결제 취소
-
-![image](https://user-images.githubusercontent.com/75401920/105200332-14a2f780-5b83-11eb-8a2c-46a1699272d8.png)
-
-
-배송 취소
-
-![image](https://user-images.githubusercontent.com/75401920/105200462-33a18980-5b83-11eb-9912-d1d2c684b5d3.png)
-
-재고 원복
-
-![image](https://user-images.githubusercontent.com/75401920/105200683-74999e00-5b83-11eb-8cf1-dc29b2eb117b.png)
-
-알림 장애 시 주문취소 불가
-
-![image](https://user-images.githubusercontent.com/75401920/105201230-fab5e480-5b83-11eb-9068-4801368a0967.png)
-
-
-7. Istio 적용 캡쳐
-
-  - Istio테스트를 위해서 Payment에 sleep 추가
-  
-![image](https://user-images.githubusercontent.com/75401920/105005616-e89b4f80-5a78-11eb-82cb-de53e5881e3f.png)
-
- - istio Virtual Service 생성
-
-![image](https://user-images.githubusercontent.com/75401920/105209144-d90d2b00-5b8c-11eb-9d32-5a81e348c330.png)
-
-![image](https://user-images.githubusercontent.com/75401920/105208750-656b1e00-5b8c-11eb-872e-dc9c51a327c7.png)
-
- - siege 테스트
-
-![image](https://user-images.githubusercontent.com/75401920/105209299-06f26f80-5b8d-11eb-86bf-e4b0f27d32bc.png)
-
-
-
-autoscale out
-
-kubectl autoscale deployment order --cpu-percent=20 --min=1 --max=10
-
-siege -c100 -t30S -v --content-type "application/json" 'http://10.0.22.136:8080/orders POST {"prodId": 1, "qty":5}'
-
-
-
-![image](https://user-images.githubusercontent.com/75401920/105206906-394e9d80-5b8a-11eb-90ea-463a33781b5b.png)
-
-
-![image](https://user-images.githubusercontent.com/75401920/105207003-56836c00-5b8a-11eb-804a-72fea60f83b3.png)
-
-
-
-readiness probe 적용전
-
-siege -c1 -t2000S -v --content-type "application/json" 'http://10.0.127.214:8080/orders POST {"prodNm": "1001", "qty":5}'
-
-kubectl set image deploy product=skcc06.azurecr.io/product:v2
-
-![image](https://user-images.githubusercontent.com/75401920/105202941-da872500-5b85-11eb-84d1-04398aecf47d.png)
-
-readiness probe 적용
-
-![image](https://user-images.githubusercontent.com/75401920/105203175-2a65ec00-5b86-11eb-9253-ea05b1f80336.png)
-
-적용 후 테스트 
-
-![image](https://user-images.githubusercontent.com/75401920/105203589-a3fdda00-5b86-11eb-8d81-e07e2dd53d64.png)
-
-![image](https://user-images.githubusercontent.com/75401920/105203774-d8719600-5b86-11eb-8acf-d98d00424c2c.png)
 
 
 
