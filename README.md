@@ -204,6 +204,9 @@ product 상품 등록
 
 
 9. Readness Proobe
+
+![image](https://user-images.githubusercontent.com/75401920/105114273-e1705200-5b09-11eb-9fd8-da7d7b57dc7b.png)
+
    siege로 계속 호출하는 중에 kubectl set image를 통해서 배포 시 무중단 배포 확인
  
   - Readiness 적용 전: 소스배포시 500 오류 발생
