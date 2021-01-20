@@ -288,6 +288,21 @@ product 상품 등록
 ![image](https://user-images.githubusercontent.com/75401920/105201230-fab5e480-5b83-11eb-9068-4801368a0967.png)
 
 
+autoscale out
+
+kubectl autoscale deployment order --cpu-percent=20 --min=1 --max=10
+
+siege -c100 -t30S -v --content-type "application/json" 'http://10.0.22.136:8080/orders POST {"prodId": 1, "qty":5}'
+
+
+
+![image](https://user-images.githubusercontent.com/75401920/105206906-394e9d80-5b8a-11eb-90ea-463a33781b5b.png)
+
+
+![image](https://user-images.githubusercontent.com/75401920/105207003-56836c00-5b8a-11eb-804a-72fea60f83b3.png)
+
+
+
 readiness probe 적용전
 
 siege -c1 -t2000S -v --content-type "application/json" 'http://10.0.127.214:8080/orders POST {"prodNm": "1001", "qty":5}'
