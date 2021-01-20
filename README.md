@@ -220,3 +220,40 @@ product 상품 등록
 
 ![image](https://user-images.githubusercontent.com/75401920/105004912-f0a6bf80-5a77-11eb-88ee-f0bcd8f67f45.png)
 
+
+  - deploy
+
+![image](https://user-images.githubusercontent.com/75401920/105191822-ddc8e380-5b7a-11eb-8211-3b3c5024fbfb.png)
+
+ - kubectl get all
+
+![image](https://user-images.githubusercontent.com/75401920/105196928-76f9f900-5b7f-11eb-859f-caf6ad584aaf.png)
+
+
+주문생성
+
+![image](https://user-images.githubusercontent.com/75401920/105197182-b0caff80-5b7f-11eb-9a07-f447b7fdc3f1.png)
+
+주문확인
+
+![image](https://user-images.githubusercontent.com/75401920/105197288-ca6c4700-5b7f-11eb-9d21-28bdbd145010.png)
+
+
+결제확인
+
+![image](https://user-images.githubusercontent.com/75401920/105197401-ee2f8d00-5b7f-11eb-871d-9fabd7126788.png)
+
+배송확인
+
+![image](https://user-images.githubusercontent.com/75401920/105197568-14edc380-5b80-11eb-9b3d-d7e353322479.png)
+
+상품재고 확인
+
+![image](https://user-images.githubusercontent.com/75401920/105197656-3058ce80-5b80-11eb-922b-76de46f176e6.png)
+
+
+알림 확인
+
+![image](https://user-images.githubusercontent.com/75401920/105197980-8c235780-5b80-11eb-8af5-769200160960.png)
+
+
