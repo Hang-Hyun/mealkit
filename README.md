@@ -296,10 +296,13 @@ product 상품 등록
 
  - istio Virtual Service 생성
 
-![image](https://user-images.githubusercontent.com/75401920/105109571-22fbff80-5b00-11eb-9690-74b751e435a6.png)
+![image](https://user-images.githubusercontent.com/75401920/105209144-d90d2b00-5b8c-11eb-9d32-5a81e348c330.png)
 
 ![image](https://user-images.githubusercontent.com/75401920/105208750-656b1e00-5b8c-11eb-872e-dc9c51a327c7.png)
 
+ - siege 테스트
+
+![image](https://user-images.githubusercontent.com/75401920/105209299-06f26f80-5b8d-11eb-86bf-e4b0f27d32bc.png)
 
 
 
