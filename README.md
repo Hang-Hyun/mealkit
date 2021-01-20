@@ -107,35 +107,6 @@
 
 
 
- - 주문 등록
-
-![image](https://user-images.githubusercontent.com/75401920/105002099-1b8f1480-5a74-11eb-957f-26f060d0bc5f.png)
-
- - 주문 등록 후 주문내역 조회 시 배송상태 변경됨 
-
-![image](https://user-images.githubusercontent.com/75401920/105001784-a3c0ea00-5a73-11eb-9c83-1d504502bca3.png)
-
- - 주문 등록 후 결제 내역 조회
-
-![image](https://user-images.githubusercontent.com/75401920/105001881-c81cc680-5a73-11eb-8b94-c25d03309a84.png)
-
- - 재고변경
-
-![image](https://user-images.githubusercontent.com/75401920/105002205-3e212d80-5a74-11eb-9d3a-469df1f27d49.png)
-
- - 주문취소
-
-![image](https://user-images.githubusercontent.com/75401920/105002335-6dd03580-5a74-11eb-860d-66d4062bd18f.png)
-
- - 주문취소 시 결제 취소 반영됨
-
-![image](https://user-images.githubusercontent.com/75401920/105002401-95270280-5a74-11eb-89c9-069db87220e6.png)
-
- - 결제취소시 배송 취소
- 
-![image](https://user-images.githubusercontent.com/75401920/105002466-acfe8680-5a74-11eb-91ba-bc04509a8b10.png)
-
-
 2. 마이페이지 조회
 
 ![image](https://user-images.githubusercontent.com/75401920/105002605-e8995080-5a74-11eb-99ad-15cdb20324ad.png)
@@ -287,6 +258,18 @@ product 상품 등록
 
 ![image](https://user-images.githubusercontent.com/75401920/105201230-fab5e480-5b83-11eb-9068-4801368a0967.png)
 
+
+7. Istio 적용 캡쳐
+
+  - Istio테스트를 위해서 Payment에 sleep 추가
+  
+![image](https://user-images.githubusercontent.com/75401920/105005616-e89b4f80-5a78-11eb-82cb-de53e5881e3f.png)
+
+ - istio Virtual Service 생성
+
+![image](https://user-images.githubusercontent.com/75401920/105109571-22fbff80-5b00-11eb-9690-74b751e435a6.png)
+
+![image](https://user-images.githubusercontent.com/75401920/105109657-5179da80-5b00-11eb-9e87-637a565c75ad.png)
 
 autoscale out
 
