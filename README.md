@@ -212,6 +212,17 @@ kubectl set image deploy product=skcc06.azurecr.io/product:v2
 
 
 
+10. Liveness probe
+
+ - Liveness probe 적용
+   실패를 확인하기 위해서 포트를 8081로 임의 변경함
+
+![image](https://user-images.githubusercontent.com/75401920/105214182-05c44100-5b93-11eb-9377-4cd46b7f4964.png)
+
+ - 실패로 인해서 restart 수 증가하는 모습 확인 가능
+ 
+![image](https://user-images.githubusercontent.com/75401920/105214090-e3322800-5b92-11eb-9230-3933cb039281.png)
+
 
 
 
