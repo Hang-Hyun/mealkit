@@ -59,7 +59,8 @@
 
 
 ### 완성된 1차 모형
-![image](https://user-images.githubusercontent.com/75401920/104998076-f9929380-5a6d-11eb-8ac9-1ba95cea971f.png)
+![image](https://user-images.githubusercontent.com/75401920/105209557-50db5580-5b8d-11eb-9f05-3f46d6b2a068.png)
+
 
     - View Model 추가
 
@@ -73,7 +74,7 @@
     - 결제가 이뤄지면 상품재고가 감소한다. (ok)
     - 배송이 요청되고 배송이 시작되면 주문상태가 배송시작으로 변경된다. (ok)
 
-![image](https://user-images.githubusercontent.com/75401920/104998646-ecc26f80-5a6e-11eb-88a2-6ff3c1eaf7f6.png)
+![image](https://user-images.githubusercontent.com/75401920/105209753-88e29880-5b8d-11eb-8b57-30a1516dbaf8.png)
 
     - 고객이 주문을 취소할 수 있다 (ok)
     - 주문이 취소되면 결제가 취소된다 (ok)
