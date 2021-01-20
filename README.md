@@ -205,7 +205,7 @@ product 상품 등록
 
 9. Readness Proobe
 
-![image](https://user-images.githubusercontent.com/75401920/105114273-e1705200-5b09-11eb-9fd8-da7d7b57dc7b.png)
+
 
    siege로 계속 호출하는 중에 kubectl set image를 통해서 배포 시 무중단 배포 확인
  
@@ -215,6 +215,8 @@ product 상품 등록
 
 
   - 적용 후: 소스배포시 100% 수행됨
+  
+![image](https://user-images.githubusercontent.com/75401920/105114273-e1705200-5b09-11eb-9fd8-da7d7b57dc7b.png)
 
 ![image](https://user-images.githubusercontent.com/75401920/105004912-f0a6bf80-5a77-11eb-88ee-f0bcd8f67f45.png)
 
