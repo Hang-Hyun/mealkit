@@ -257,3 +257,56 @@ product 상품 등록
 ![image](https://user-images.githubusercontent.com/75401920/105197980-8c235780-5b80-11eb-8af5-769200160960.png)
 
 
+
+
+
+주문 취소
+
+![image](https://user-images.githubusercontent.com/75401920/105200054-c42b9a00-5b82-11eb-9bf0-3bbfdbc27c0c.png)
+
+
+알림 확인(동기방식 및 Correaltion)
+
+![image](https://user-images.githubusercontent.com/75401920/105200173-e4f3ef80-5b82-11eb-82be-8b91f905afa8.png)
+
+
+결제 취소
+
+![image](https://user-images.githubusercontent.com/75401920/105200332-14a2f780-5b83-11eb-8a2c-46a1699272d8.png)
+
+
+배송 취소
+
+![image](https://user-images.githubusercontent.com/75401920/105200462-33a18980-5b83-11eb-9912-d1d2c684b5d3.png)
+
+재고 원복
+
+![image](https://user-images.githubusercontent.com/75401920/105200683-74999e00-5b83-11eb-8cf1-dc29b2eb117b.png)
+
+알림 장애 시 주문취소 불가
+
+![image](https://user-images.githubusercontent.com/75401920/105201230-fab5e480-5b83-11eb-9068-4801368a0967.png)
+
+
+readiness probe 적용전
+
+siege -c1 -t2000S -v --content-type "application/json" 'http://10.0.127.214:8080/orders POST {"prodNm": "1001", "qty":5}'
+
+kubectl set image deploy product=skcc06.azurecr.io/product:v2
+
+![image](https://user-images.githubusercontent.com/75401920/105202941-da872500-5b85-11eb-84d1-04398aecf47d.png)
+
+readiness probe 적용
+
+![image](https://user-images.githubusercontent.com/75401920/105203175-2a65ec00-5b86-11eb-9253-ea05b1f80336.png)
+
+적용 후 테스트 
+
+![image](https://user-images.githubusercontent.com/75401920/105203589-a3fdda00-5b86-11eb-8d81-e07e2dd53d64.png)
+
+
+
+
+
+
+
