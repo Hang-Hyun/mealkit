@@ -304,7 +304,7 @@ readiness probe 적용
 
 ![image](https://user-images.githubusercontent.com/75401920/105203589-a3fdda00-5b86-11eb-8d81-e07e2dd53d64.png)
 
-
+![image](https://user-images.githubusercontent.com/75401920/105203774-d8719600-5b86-11eb-8acf-d98d00424c2c.png)
 
 
 
