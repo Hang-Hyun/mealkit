@@ -105,11 +105,40 @@
 1,3. 주문->결제->배송->주문 캡쳐
 
 
+주문생성
+
+![image](https://user-images.githubusercontent.com/75401920/105197182-b0caff80-5b7f-11eb-9a07-f447b7fdc3f1.png)
 
 
-2. 마이페이지 조회
+주문 취소
 
-![image](https://user-images.githubusercontent.com/75401920/105002605-e8995080-5a74-11eb-99ad-15cdb20324ad.png)
+![image](https://user-images.githubusercontent.com/75401920/105200054-c42b9a00-5b82-11eb-9bf0-3bbfdbc27c0c.png)
+
+
+알림 확인(동기방식 및 Correaltion)
+
+![image](https://user-images.githubusercontent.com/75401920/105200173-e4f3ef80-5b82-11eb-82be-8b91f905afa8.png)
+
+
+결제 취소
+
+![image](https://user-images.githubusercontent.com/75401920/105200332-14a2f780-5b83-11eb-8a2c-46a1699272d8.png)
+
+
+배송 취소
+
+![image](https://user-images.githubusercontent.com/75401920/105200462-33a18980-5b83-11eb-9912-d1d2c684b5d3.png)
+
+재고 원복
+
+![image](https://user-images.githubusercontent.com/75401920/105200683-74999e00-5b83-11eb-8cf1-dc29b2eb117b.png)
+
+
+
+2. 셀러페이지 조회
+
+![image](https://user-images.githubusercontent.com/75401920/105208363-f7bef200-5b8b-11eb-8a7d-086f95698335.png)
+
 
 
 3. 결제서비스 장애 시 주문 불가
