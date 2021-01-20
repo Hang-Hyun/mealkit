@@ -169,6 +169,18 @@ product 상품 등록
   
 ![image](https://user-images.githubusercontent.com/75401920/105005616-e89b4f80-5a78-11eb-82cb-de53e5881e3f.png)
 
+ - istio Virtual Service 생성
+
+![image](https://user-images.githubusercontent.com/75401920/105109571-22fbff80-5b00-11eb-9690-74b751e435a6.png)
+
+![image](https://user-images.githubusercontent.com/75401920/105109657-5179da80-5b00-11eb-9e87-637a565c75ad.png)
+
+ - 적용 후 siege로 부하 테스트
+  3초 넘어가는 요청건은 실패로 처리 됨
+
+![image](https://user-images.githubusercontent.com/75401920/105109994-07452900-5b01-11eb-857b-385a5960fecb.png)
+
+ 추가 적용
  - payments 서비스에 Istio 적용
    
 ![image](https://user-images.githubusercontent.com/75401920/105006822-7f1c4080-5a7a-11eb-9191-db35233773d3.png)
