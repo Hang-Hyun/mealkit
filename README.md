@@ -298,7 +298,10 @@ product 상품 등록
 
 ![image](https://user-images.githubusercontent.com/75401920/105109571-22fbff80-5b00-11eb-9690-74b751e435a6.png)
 
-![image](https://user-images.githubusercontent.com/75401920/105109657-5179da80-5b00-11eb-9e87-637a565c75ad.png)
+![image](https://user-images.githubusercontent.com/75401920/105208750-656b1e00-5b8c-11eb-872e-dc9c51a327c7.png)
+
+
+
 
 autoscale out
 
