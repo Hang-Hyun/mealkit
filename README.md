@@ -125,6 +125,9 @@
 
 ![image](https://user-images.githubusercontent.com/75401920/105200683-74999e00-5b83-11eb-8cf1-dc29b2eb117b.png)
 
+알림 장애 시 주문취소 불가
+
+![image](https://user-images.githubusercontent.com/75401920/105201230-fab5e480-5b83-11eb-9068-4801368a0967.png)
 
 
 2. 셀러페이지 조회
