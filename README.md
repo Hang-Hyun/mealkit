@@ -211,6 +211,21 @@ kubectl set image deploy product=skcc06.azurecr.io/product:v2
 
 
 
+9. configmap 
+
+ - configmap 생성
+
+![image](https://user-images.githubusercontent.com/75401920/105248814-6f0b7a80-5bba-11eb-835c-26bc4bfa3609.png)
+
+
+ - configmap 적용
+
+![image](https://user-images.githubusercontent.com/75401920/105248860-8480a480-5bba-11eb-9e09-bfc48fab4ec1.png)
+
+ - configmap 적용된 모습
+
+![image](https://user-images.githubusercontent.com/75401920/105249332-5059b380-5bbb-11eb-986d-e86f7143424c.png)
+
 
 10. Liveness probe
 
