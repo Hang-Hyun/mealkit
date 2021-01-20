@@ -195,7 +195,7 @@ product 상품 등록
 
 ![image](https://user-images.githubusercontent.com/75401920/105006642-4714fd80-5a7a-11eb-8424-aa2dede45666.png)
 
- - AutoScale로  order pod 개수가 증가함
+ - AutoScale적용 후 seige를 통해서 부하 테스트 시  order pod 개수가 증가함
 
 ![image](https://user-images.githubusercontent.com/75401920/105006308-cf46d300-5a79-11eb-96db-77d865c9bfe9.png)
 
