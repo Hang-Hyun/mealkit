@@ -95,7 +95,7 @@
 분석/설계 단계에서 도출된 헥사고날 아키텍처에 따라, 각 BC별로 대변되는 마이크로 서비스들을 스프링부트로 구현하였다. 
 
 
-1. 
+1. 기능 테스트
 
 주문생성
 
@@ -125,9 +125,6 @@
 
 ![image](https://user-images.githubusercontent.com/75401920/105200683-74999e00-5b83-11eb-8cf1-dc29b2eb117b.png)
 
-알림 장애 시 주문취소 불가
-
-![image](https://user-images.githubusercontent.com/75401920/105201230-fab5e480-5b83-11eb-9068-4801368a0967.png)
 
 
 2. 셀러페이지 조회
@@ -136,9 +133,9 @@
 
 
 
-3. 결제서비스 장애 시 주문 불가
+3. 알림 장애 시 주문취소 불가
 
-![image](https://user-images.githubusercontent.com/75401920/105002912-52b1f580-5a75-11eb-8ce0-b661fbbcc1d3.png)
+![image](https://user-images.githubusercontent.com/75401920/105201230-fab5e480-5b83-11eb-9068-4801368a0967.png)
 
 
 
